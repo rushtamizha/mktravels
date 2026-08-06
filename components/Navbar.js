@@ -262,7 +262,7 @@ export default function Navbar() {
                     >
                       {/* ICON FORMATTING (MOBILE) */}
                       {menu.icon && (
-                        <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-50 text-blue-800 shrink-0">
+                        <span className="hidden h-7 w-7 items-center justify-center rounded-lg bg-blue-50 text-blue-800 shrink-0">
                           {menu.icon}
                         </span>
                       )}

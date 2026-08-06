@@ -90,7 +90,7 @@ const TourPackages = ({ tourpackages }) => {
                     fill
                     priority={idx < 3}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    src={category.tourThumbnail || "" }
+                    src={category.tourThumbnail || FALLBACK_IMAGE }
                     alt={category.label || "Tour Package"}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

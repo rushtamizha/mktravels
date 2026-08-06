@@ -144,7 +144,7 @@ export default function TravelSolutions() {
                   className="rounded-2xl p-6 bg-white/5 backdrop-blur-md border border-white/10   transition-all duration-300 flex flex-col justify-between space-y-6 group"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-3xl font-black text-white/20 group-hover:text-orange-500 transition-colors">
+                    <span className="text-3xl font-semibold text-white/20 group-hover:text-orange-500 transition-colors">
                       {item.number}
                     </span>
                     <div className="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center group-hover:bg-orange-600 transition-colors">

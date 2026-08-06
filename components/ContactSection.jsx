@@ -38,7 +38,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="w-full bg-white py-10 px-4   text-slate-900">
+    <section className="w-full bg-white py-10 px-4 tracking-wide  text-slate-900">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* HEADER BLOCK */}
@@ -70,10 +70,10 @@ export default function ContactSection() {
 
             <div className="relative z-10 space-y-8">
               <div className="space-y-2">
-                <h3 className="text-2xl font-black text-white">
+                <h3 className="text-2xl font-semibold text-white">
                   Contact Information
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
                   Reach out via phone, email, or WhatsApp. We guarantee fast response times for all inquiries.
                 </p>
               </div>
@@ -146,7 +146,7 @@ export default function ContactSection() {
 
             {/* Quick WhatsApp Action */}
             <div className="relative z-10 pt-8 mt-8 border-t border-white/15 space-y-3">
-              <span className="text-xs text-slate-400 font-medium block">
+              <span className="text-xs text-slate-400 font-semibold block">
                 Prefer instant messaging?
               </span>
               <a

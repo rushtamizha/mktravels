@@ -11,6 +11,7 @@ import {
   MessageCircle,
   CheckCircle2,
   Headphones,
+  FileIcon,
 } from "lucide-react";
 import { companyInfo } from "@/lib/data";
 
@@ -38,42 +39,35 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="w-full bg-slate-50/70 py-20 px-4 sm:px-6 lg:px-8 text-slate-900">
+    <section className="w-full bg-white py-40 px-4  text-slate-900">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* HEADER BLOCK */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200/80 pb-8">
-          <div className="space-y-3 max-w-2xl">
-            <span className="inline-flex items-center gap-2 text-xs font-extrabold  text-orange-600 uppercase bg-orange-50 px-3.5 py-1.5 rounded-full border border-orange-100">
-              <Headphones className="w-3.5 h-3.5" />
-              Get In Touch
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-blue-900">
-              Plan Your Journey <span className="text-orange-600">With Us</span>
+     <div className="space-y-2">
+            <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-800/30 py-1.5 rounded-full w-max bg-blue-50 text-blue-800">
+              <FileIcon className="w-3.5 h-3.5" />
+              Get in Touch
+            </div>
+            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
+              Ready to Plan Your Perfect<br />
+              <span className="text-orange-600 font-bold">South India Trip?</span>
             </h2>
+            <p className="text-slate-500 text-sm md:text-base font-semibold max-w-xl">
+              Have questions or need a customized itinerary? Our travel experts are here to help you choose the ideal tour package, vehicle, and travel plan.
+            </p>
           </div>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-md">
-            Have questions or want a custom trip itinerary? Fill out the form or
-            message us directly — our team is available 24/7 to assist your travel plans.
-          </p>
-        </div>
 
         {/* MAIN CONTACT CONTENT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* LEFT: INFO CARD (5 Cols) */}
           <div className="lg:col-span-5 bg-blue-950 rounded-[2.5rem] p-8 sm:p-10 text-white relative overflow-hidden shadow-2xl flex flex-col justify-between border border-blue-900">
-            
-            {/* Background Decorative Blur */}
-            <div className="absolute -right-12 -top-12 w-48 h-48 bg-orange-600/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -left-12 -bottom-12 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
-
             <div className="relative z-10 space-y-8">
               <div className="space-y-2">
-                <h3 className="text-2xl font-black text-white">
+                <h3 className="text-2xl font-semibold text-white">
                   Contact Information
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-white leading-relaxed font-normal">
                   Reach out via phone, email, or WhatsApp. We guarantee fast response times for all inquiries.
                 </p>
               </div>
@@ -145,10 +139,7 @@ export default function ContactSection() {
             </div>
 
             {/* Quick WhatsApp Action */}
-            <div className="relative z-10 pt-8 mt-8 border-t border-white/15 space-y-3">
-              <span className="text-xs text-slate-400 font-medium block">
-                Prefer instant messaging?
-              </span>
+            <div className="relative z-10 pt-8  space-y-3">
               <a
                 href="https://wa.me/919489485353?text=Hi%2C%20I%20would%20like%20to%20book%20a%20ride"
                 target="_blank"
@@ -163,7 +154,7 @@ export default function ContactSection() {
           </div>
 
           {/* RIGHT: CONTACT FORM (7 Cols) */}
-          <div className="lg:col-span-7 bg-white rounded-[2.5rem] p-8 sm:p-10 border border-slate-200/80 shadow-lg flex flex-col justify-center">
+          <div className="lg:col-span-7 bg-white rounded-[2.5rem] p-8 sm:p-10 border border-slate-200/80 shadow-xs flex flex-col justify-center">
             
             {submitted ? (
               <motion.div

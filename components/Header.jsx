@@ -26,7 +26,7 @@ const Header = ({ prefix, suffix, description, images }) => {
   const hasImages = coverImages.length > 0;
 
   return (
-    <div className="relative flex h-[34vh] min-h-[280px] items-center justify-center overflow-hidden bg-slate-950 pt-20 sm:h-[42vh] sm:min-h-[360px]">
+    <div className="relative flex h-[34vh] min-h-[280px] tracking-wide items-center justify-center overflow-hidden bg-slate-950 pt-20 sm:h-[42vh] sm:min-h-[360px]">
       {/* Background */}
       <div className="absolute inset-0 z-0 opacity-40">
         {hasImages ? (
@@ -70,12 +70,12 @@ const Header = ({ prefix, suffix, description, images }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="mb-2 text-3xl font-black uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h1 className="mb-2 text-3xl font-semibold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
             {prefix}
             {suffix && <span className="ml-2 text-orange-500">{suffix}</span>}
           </h1>
           {description && (
-            <p className="mx-auto max-w-2xl text-xs font-medium leading-relaxed text-white sm:text-sm md:text-base">
+            <p className="mx-auto max-w-2xl text-xs font-semibold leading-relaxed text-white sm:text-sm md:text-base">
               {description}
             </p>
           )}

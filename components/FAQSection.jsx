@@ -10,6 +10,7 @@ import {
   MessageCircle,
   ArrowRight,
   Headphones,
+  FileQuestion,
 } from "lucide-react";
 
 const faqData = [
@@ -53,22 +54,21 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full bg-white py-10 px-4  text-slate-900">
+    <section className="w-full bg-white py-10 px-4 tracking-wide text-slate-900">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* HEADER BLOCK */}
        
 <div className="space-y-2">
-            <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-600 py-1.5 rounded-full w-max bg-blue-50 text-blue-600">
-              <MessageCircle className="w-3.5 h-3.5" />
-              Verified Google Reviews
+            <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-800/30 py-1.5 rounded-full w-max bg-blue-50 text-blue-800">
+              <FileQuestion className="w-3.5 h-3.5" />
+              Frequently Asked Questions
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
-              Trusted By Thousands <br />
-              <span className="text-orange-600">Of Travelers</span>
+              Everything You Need to Know Before <br />
+              <span className="text-orange-600 font-bold">Booking Your Tour</span>
             </h2>
-            <p className="text-slate-500 text-sm md:text-base font-medium max-w-xl">
-              Authentic reviews synced directly from Google My Business.
-              Experience 100% transparent pricing across every route.
+            <p className="text-slate-500 text-sm md:text-base font-semibold max-w-xl">
+              Find answers to the most common questions about our South India tour packages, private cab services, pricing, inclusions, destinations, and booking process
             </p>
           </div>
         {/* FAQ CONTENT GRID */}
@@ -103,7 +103,7 @@ export default function FAQSection() {
                         {item.id}
                       </span>
                       <h3
-                        className={`text-base sm:text-lg font-bold transition-colors ${
+                        className={`text-sm sm:text-lg font-semibold transition-colors ${
                           isOpen ? "text-blue-900" : "text-slate-800"
                         }`}
                       >
@@ -145,8 +145,7 @@ export default function FAQSection() {
           <div className="lg:col-span-4">
             <div className="bg-blue-950 rounded-[2rem] p-8 text-white relative overflow-hidden border border-blue-900 shadow-xl space-y-6">
               
-              {/* Background Accent Decorative Circle */}
-              <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-orange-600/20 rounded-full blur-2xl pointer-events-none" />
+
 
               <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 flex items-center justify-center text-orange-400">
                 <Headphones className="w-6 h-6" />
@@ -159,7 +158,7 @@ export default function FAQSection() {
                 <h3 className="text-2xl font-bold leading-tight">
                   Do You Have Different Questions?
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pt-1">
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed pt-1">
                   Didn’t find your answer here? Contact us directly — we’ll guide
                   you with all travel details.
                 </p>
@@ -185,13 +184,6 @@ export default function FAQSection() {
                 </a>
               </div>
 
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-medium">
-                <span className="flex items-center gap-1.5">
-                  <PhoneCall className="w-3.5 h-3.5 text-orange-400" />
-                  +91 94894 85353
-                </span>
-                <span>24/7 Support</span>
-              </div>
 
             </div>
           </div>

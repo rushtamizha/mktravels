@@ -108,7 +108,7 @@ function VehicleCard({ vehicle, isBestValue, packageLabel, index }) {
           <h4 className="text-lg font-extrabold text-slate-900 transition-colors group-hover:text-blue-800">
             {vehicle.name}
           </h4>
-          <p className="mt-0.5 text-[12px] font-medium text-slate-500">
+          <p className="mt-0.5 text-[12px] font-semibold text-slate-500">
             Air-Conditioned · Sanitised Interior
           </p>
         </div>
@@ -130,7 +130,7 @@ function VehicleCard({ vehicle, isBestValue, packageLabel, index }) {
             <span className="block text-[10px] font-bold uppercase  text-slate-400">
               All-Inclusive Fare
             </span>
-            <span className="text-2xl font-black tracking-tight text-orange-600">
+            <span className="text-2xl font-semibold tracking-tight text-orange-600">
               {vehicle.packageAmount}
             </span>
           </div>
@@ -262,7 +262,7 @@ export default function TourPackageDetailPage() {
             <div className="space-y-4">
               <div className="flex items-center justify-between px-1">
                 <div>
-                  <h3 className="flex items-center gap-2.5 text-xl font-black tracking-tight text-slate-900 sm:text-2xl">
+                  <h3 className="flex items-center gap-2.5 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
                     <Car className="h-6 w-6 text-blue-800" />
                     Available Fleet & Fixed Fares
                   </h3>
@@ -321,7 +321,7 @@ export default function TourPackageDetailPage() {
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-widest text-blue-800">
                     24/7 Desk
                   </span>
-                  <h3 className="mt-2 text-xl font-black text-slate-900 sm:text-2xl">
+                  <h3 className="mt-2 text-xl font-semibold text-slate-900 sm:text-2xl">
                     Need Assistance?
                   </h3>
                   <p className="mt-1 text-[12.5px] leading-relaxed text-slate-500">
@@ -350,13 +350,13 @@ export default function TourPackageDetailPage() {
                 </div>
 
                 <div className="space-y-3 border-t border-slate-100 pt-4">
-                  <div className="flex items-center gap-3 text-xs font-medium text-slate-600">
+                  <div className="flex items-center gap-3 text-xs font-semibold text-slate-600">
                     <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-800">
                       <MapPin size={13} />
                     </span>
                     Doorstep pickup & drop across Tamil Nadu
                   </div>
-                  <div className="flex items-center gap-3 text-xs font-medium text-slate-600">
+                  <div className="flex items-center gap-3 text-xs font-semibold text-slate-600">
                     <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-orange-50 text-orange-600">
                       <CheckCircle2 size={13} />
                     </span>

@@ -15,7 +15,7 @@ import {
 
 export default function TravelPartnerHero() {
   return (
-    <section className="w-full bg-white py-10 px-4   text-slate-900">
+    <section className="w-full bg-white py-10 px-4  tracking-wide text-slate-900">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -105,7 +105,7 @@ export default function TravelPartnerHero() {
                 <Clock className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[10px] text-white font-medium uppercase ">
+                <p className="text-[10px] text-white font-semibold uppercase ">
                   Flexible
                 </p>
                 <p className="text-xs font-bold">8 & 10 Hrs Packages</p>
@@ -117,7 +117,7 @@ export default function TravelPartnerHero() {
                 <Car className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[10px] text-white font-medium uppercase ">
+                <p className="text-[10px] text-white font-semibold uppercase ">
                   Vehicle Range
                 </p>
                 <p className="text-xs font-bold">Sedan, SUV & Vans</p>
@@ -129,7 +129,7 @@ export default function TravelPartnerHero() {
                 <ShieldCheck className="w-4 h-4" />
               </div>
               <div>
-                <p className="text-[10px] text-white font-medium uppercase ">
+                <p className="text-[10px] text-white font-semibold uppercase ">
                   Pricing
                 </p>
                 <p className="text-xs font-bold">Zero Hidden Tolls</p>

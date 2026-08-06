@@ -2,7 +2,7 @@
 
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Compass, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowUpRight, Compass, MapPin, MessageCircle, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { navItems } from "@/lib/data";
@@ -55,17 +55,16 @@ const TourPackages = ({ tourpackages }) => {
         className="mb-10 flex max-w-3xl flex-col items-start space-y-3 text-left"
       >
         <div className="space-y-2">
-                    <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-600 py-1.5 rounded-full w-max bg-blue-50 text-blue-600">
-                      <MessageCircle className="w-3.5 h-3.5" />
-                      Verified Google Reviews
+                    <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-800/30 py-1.5 rounded-full w-max bg-blue-50 text-blue-800">
+                      <MapPin className="w-3.5 h-3.5" />
+                      Premium South India Tour Packages
                     </div>
                     <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
-                      Trusted By Thousands <br />
-                      <span className="text-orange-600">Of Travelers</span>
+                      Explore the Best South India's <br />
+                      <span className="text-orange-600 font-bold">Tour Packages</span>
                     </h2>
-                    <p className="text-slate-500 text-sm md:text-base font-medium max-w-xl">
-                      Authentic reviews synced directly from Google My Business.
-                      Experience 100% transparent pricing across every route.
+                    <p className="text-slate-500 text-sm md:text-base font-semibold max-w-xl">
+                      Discover affordable private tour packages across South India with comfortable cabs, experienced drivers, and customizable itineraries. 
                     </p>
                   </div>
       </motion.div>
@@ -97,7 +96,7 @@ const TourPackages = ({ tourpackages }) => {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
                   {category.routesCount > 0 && (
-                    <span className="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-orange-500 shadow-xs">
+                    <span className="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-orange-500 shadow-xs">
                       <Compass size={12} /> {category.routesCount} Available
                       Routes
                     </span>
@@ -120,7 +119,7 @@ const TourPackages = ({ tourpackages }) => {
                     <p className="text-[10px] font-bold uppercase  text-slate-400">
                       Package Starts From
                     </p>
-                    <p className="text-lg font-black text-orange-600">
+                    <p className="text-lg font-semibold text-orange-600">
                       {category.startingPrice
                         ? `Rs. ${category.startingPrice.toLocaleString("en-IN")}`
                         : "Contact Us"}

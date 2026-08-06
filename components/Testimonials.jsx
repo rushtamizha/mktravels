@@ -61,15 +61,15 @@ export default function Testimonials() {
         {/* SECTION HEADER BLOCK */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-600 py-1.5 rounded-full w-max bg-blue-50 text-blue-600">
+            <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-800/30 py-1.5 rounded-full w-max bg-blue-50 text-blue-800">
               <MessageCircle className="w-3.5 h-3.5" />
               Verified Google Reviews
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
               Trusted By Thousands <br />
-              <span className="text-orange-600">Of Travelers</span>
+              <span className="text-orange-600 font-bold">Of Travelers</span>
             </h2>
-            <p className="text-slate-500 text-sm md:text-base font-medium max-w-xl">
+            <p className="text-slate-500 text-sm md:text-base font-semibold max-w-xl">
               Authentic reviews synced directly from Google My Business.
               Experience 100% transparent pricing across every route.
             </p>
@@ -81,7 +81,7 @@ export default function Testimonials() {
               href={gmbReviewUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2.5 bg-white text-[#1a73e8] hover:bg-[#f8f9fa] hover:text-[#174ea6] border border-[#dadce0] font-medium text-xs py-2.5 px-4 rounded-full shadow-2xs hover:shadow-xs transition-all tracking-wide"
+              className="inline-flex items-center gap-2.5 bg-white text-[#1a73e8] hover:bg-[#f8f9fa] hover:text-[#174ea6] border border-[#dadce0] font-semibold text-xs py-2.5 px-4 rounded-full shadow-2xs hover:shadow-xs transition-all tracking-wide"
             >
               {/* Authentic 4-Color Google "G" Icon */}
               <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function Testimonials() {
                 />
               </svg>
 
-              <span className="font-medium text-slate-500">
+              <span className="font-semibold text-slate-500">
                 Write a Review on{" "}
                 <strong className="text-slate-900 font-semibold">Google</strong>
               </span>
@@ -131,7 +131,7 @@ export default function Testimonials() {
           >
             {reviews.map((review) => (
               <SwiperSlide key={review.id} className="h-auto">
-                <div className="bg-white border border-slate-100 rounded-[2rem] p-6 md:p-8 flex flex-col h-full justify-between transition-all duration-300 hover:bg-white hover:shadow-xs hover:border-slate-200 m-0.5 relative group">
+                <div className="bg-white border border-slate-100 rounded-[2rem] p-6 md:p-8 flex flex-col h-full justify-between transition-all duration-300 hover:bg-white shadow-xs hover:shadow-xs hover:border-slate-200 m-0.5 relative group">
                   {/* Real Google Brand Logo Badge */}
                   <div className="absolute right-4 top-3 bg-white/95 backdrop-blur-xs border border-slate-200/90 py-1.5 px-3 rounded-2xl shadow-xs group-hover:shadow-md transition-all duration-300 flex items-center gap-2.5 z-10">
                     {/* Your Brand Logo */}
@@ -187,7 +187,7 @@ export default function Testimonials() {
                     </div>
 
                     {/* Main Comment Quote Text */}
-                    <p className="text-slate-700 text-sm md:text-base font-medium leading-relaxed pr-8">
+                    <p className="text-slate-700 text-sm md:text-base font-semibold leading-relaxed pr-8">
                       "{review.comment.slice(0, 100)}..."
                     </p>
                   </div>

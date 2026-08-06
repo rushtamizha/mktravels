@@ -25,7 +25,7 @@ export const HeroSection = () => {
   const [swiperRef, setSwiperRef] = useState(null);
 
   return (
-    <section className="relative flex items-center justify-center w-full min-h-screen pt-28 pb-16 overflow-hidden bg-slate-950 capitalize">
+    <section className="relative flex items-center tracking-wide justify-center w-full min-h-screen pt-28 pb-16 overflow-hidden bg-slate-950 capitalize">
       {/* BACKGROUND SWIPER WITH ZOOM EFFECT */}
       <div className="absolute inset-0 z-0">
         <Swiper
@@ -89,7 +89,7 @@ export const HeroSection = () => {
           </motion.div>
 
           {/* MAIN HEADING */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.02] tracking-tight uppercase mb-6 drop-shadow-sm">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-[1.02] tracking-tight uppercase mb-6 drop-shadow-sm">
             {companyInfo.companyName.split(" ").slice(0, 1)}{" "}
             <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 bg-clip-text text-transparent">
               {companyInfo.companyName.split(" ").slice(1).join(" ")}
@@ -103,7 +103,7 @@ export const HeroSection = () => {
               Coimbatore
             </span>
             , offering luxury cabs and tour packages with active hubs in{" "}
-            <span className="text-white font-medium">
+            <span className="text-white font-semibold">
               Pollachi, Coimbatore, and Cochin.
             </span>
           </p>

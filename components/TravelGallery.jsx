@@ -88,23 +88,9 @@ export default function TravelGallery() {
     <section className="w-full tracking-wide bg-white px-4 py-10 pb-20 overflow-hidden text-slate-900 relative">
       <div className="max-w-7xl mx-auto  space-y-10">
         
-        {/* HEADER BLOCK */}
-        <div className="space-y-2">
-            <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-600 py-1.5 rounded-full w-max bg-blue-50 text-blue-600">
-              <Compass className="w-3.5 h-3.5" />
-              Verified Google Reviews
-            </div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
-              Trusted By Thousands <br />
-              <span className="text-orange-600">Of Travelers</span>
-            </h2>
-            <p className="text-slate-500 text-sm md:text-base font-medium max-w-xl">
-              Authentic reviews synced directly from Google My Business.
-              Experience 100% transparent pricing across every route.
-            </p>
-          </div>
+
       </div>
-      <div className="mt-4 relative w-full  max-w-7xl mx-auto ">
+      <div className="relative w-full  max-w-7xl mx-auto ">
 
         <Swiper
           key={activeCategory} // Force re-render when switching filter category

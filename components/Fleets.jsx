@@ -13,6 +13,7 @@ import {
   CalendarDays,
   ChevronDown,
   MessageCircle,
+  Car,
 } from "lucide-react";
 
 import { fareDetails } from "@/lib/data";
@@ -38,7 +39,11 @@ const normalizeFareParam = (param) => {
     return "outstationKmBasis";
   if (p.includes("outstationday") || p.includes("daybasis"))
     return "outstationDayBasis";
-  if (p.includes("oneway") || p.includes("onewaydropping") || p.includes("fixed"))
+  if (
+    p.includes("oneway") ||
+    p.includes("onewaydropping") ||
+    p.includes("fixed")
+  )
     return "oneWayDroppingFixed";
   if (p.includes("airport") || p.includes("airporttransfer"))
     return "airportTransfer";
@@ -102,21 +107,21 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
   }, [fares, targetFareMode]);
 
   const [activeMode, setActiveMode] = useState(
-    targetFareMode || availableModes[0]?.key
+    targetFareMode || availableModes[0]?.key,
   );
 
   const localHrsOptions = fares.local ? Object.keys(fares.local) : [];
   const [activeHrs, setActiveHrs] = useState(
-    localHrsOptions.includes("hrs10") ? "hrs10" : localHrsOptions[0]
+    localHrsOptions.includes("hrs10") ? "hrs10" : localHrsOptions[0],
   );
 
   const [activeDropRoute, setActiveDropRoute] = useState(
     fares.oneWayDroppingFixed
       ? Object.keys(fares.oneWayDroppingFixed)[0]
-      : undefined
+      : undefined,
   );
   const [activeTransferRoute, setActiveTransferRoute] = useState(
-    fares.airportTransfer ? Object.keys(fares.airportTransfer)[0] : undefined
+    fares.airportTransfer ? Object.keys(fares.airportTransfer)[0] : undefined,
   );
 
   if (!activeMode || !fares[activeMode]) return null;
@@ -150,7 +155,7 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
       { label: "Driver/Day", value: formatINR(d.driverAllowancePerDay) },
     ];
     bookingContext = `${vehicle.name} - Outstation Round Trip (KM basis, ${formatINR(
-      heroPrice
+      heroPrice,
     )})`;
   }
 
@@ -164,7 +169,7 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
       { label: "Extra Km", value: formatINR(d.extraKmFare) },
     ];
     bookingContext = `${vehicle.name} - Outstation Round Trip (Day basis, ${formatINR(
-      heroPrice
+      heroPrice,
     )})`;
   }
 
@@ -180,7 +185,7 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
       <RouteSelect routes={routes} value={key} onChange={setActiveDropRoute} />
     );
     bookingContext = `${vehicle.name} - One Way Drop, ${formatRouteLabel(
-      key
+      key,
     )} (${formatINR(heroPrice)})`;
   }
 
@@ -200,17 +205,17 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
       />
     );
     bookingContext = `${vehicle.name} - Outstation Airport Transfer, ${formatRouteLabel(
-      key
+      key,
     )} (${formatINR(heroPrice)})`;
   }
 
   const whatsappHref = `https://wa.me/919489485353?text=${encodeURIComponent(
-    `Hi, I want to book the ${bookingContext}`
+    `Hi, I want to book the ${bookingContext}`,
   )}`;
 
   return (
     <div className="h-auto">
-      <div className="bg-white rounded-[2rem] border border-slate-100 shadow-xs hover:shadow-sm transition-all duration-300 flex flex-col h-full overflow-hidden relative group">
+      <div className="bg-white rounded-[2rem] border tracking-wide border-slate-100 shadow-xs hover:shadow-sm transition-all duration-300 flex flex-col h-full overflow-hidden relative group">
         {/* Vehicle Image */}
         <div className="w-full h-36 bg-slate-50 flex items-center justify-center relative overflow-hidden border-b border-slate-50">
           <div className="w-full h-full relative transition-transform duration-500 group-hover:scale-105">
@@ -235,7 +240,7 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
             </span>
           </div>
 
-          <div className="flex items-center gap-1 text-[11px] font-medium text-orange-600 mb-3">
+          <div className="flex items-center gap-1 text-[11px] font-semibold text-orange-600 mb-3">
             <ShieldCheck className="w-3.5 h-3.5 fill-current" />
             <span>Verified Active Route Fleet</span>
           </div>
@@ -292,7 +297,7 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
 
             <div className="flex items-end justify-between">
               <div className="flex flex-col">
-                <span className="text-[10px] text-slate-500 font-medium">
+                <span className="text-[10px] text-slate-500 font-semibold">
                   {heroNote}
                 </span>
                 <span className="text-xl font-semibold text-orange-600 leading-tight">
@@ -311,10 +316,10 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
           </div>
 
           <div className="flex justify-between items-center px-1 mb-4">
-            <span className="text-slate-500 font-medium text-xs flex items-center gap-1.5">
+            <span className="text-slate-500 font-semibold text-xs flex items-center gap-1.5">
               <Briefcase className="w-4 h-4 text-slate-400" /> Toll & Parking
             </span>
-            <span className="text-slate-500 font-medium text-xs">Extra</span>
+            <span className="text-slate-500 font-semibold text-xs">Extra</span>
           </div>
 
           <div className="space-y-2.5 mt-auto">
@@ -337,18 +342,17 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
 // Main Section Component (Supports Prop & URL Params)
 // ---------------------------------------------------------------------------
 export default function AirportTransfers({ serviceType }) {
-
-  const rawParam = serviceType
+  const rawParam = serviceType;
 
   const targetFareMode = useMemo(
     () => normalizeFareParam(rawParam),
-    [rawParam]
+    [rawParam],
   );
 
   // Filter vehicles list: If parameter is passed, only show vehicles that have data for that fare type
   const vehiclesList = useMemo(() => {
     const list = Object.entries(fareDetails.vehicles || {}).map(
-      ([key, vehicle]) => ({ id: key, ...vehicle })
+      ([key, vehicle]) => ({ id: key, ...vehicle }),
     );
 
     if (!targetFareMode) return list;
@@ -364,19 +368,18 @@ export default function AirportTransfers({ serviceType }) {
       <div className="max-w-7xl mx-auto">
         {/* HEADER BLOCK */}
         <div className="space-y-2 mb-10">
-            <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-600 py-1.5 rounded-full w-max bg-blue-50 text-blue-600">
-              <MessageCircle className="w-3.5 h-3.5" />
-              Verified Google Reviews
-            </div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
-              Trusted By Thousands <br />
-              <span className="text-orange-600">Of Travelers</span>
-            </h2>
-            <p className="text-slate-500 text-sm md:text-base font-medium max-w-xl">
-              Authentic reviews synced directly from Google My Business.
-              Experience 100% transparent pricing across every route.
-            </p>
+          <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-800/30 py-1.5 rounded-full w-max bg-blue-50 text-blue-800">
+            <Car className="w-3.5 h-3.5" />
+            Premium Cab Fleet
           </div>
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
+            Choose the Perfect Vehicle for <br />
+            <span className="text-orange-600 font-bold">Every Journey</span>
+          </h2>
+          <p className="text-slate-500 text-sm md:text-base font-semibold max-w-xl">
+            Choose from our wide range of clean, comfortable, and well-maintained vehicles for local trips, outstation travel, airport transfers, and tour packages.
+          </p>
+        </div>
 
         {/* FLEETS GRID */}
         {vehiclesList.length > 0 ? (
@@ -391,7 +394,7 @@ export default function AirportTransfers({ serviceType }) {
           </div>
         ) : (
           <div className="text-center py-12 bg-slate-50 rounded-2xl border border-slate-100">
-            <p className="text-slate-500 font-medium text-sm">
+            <p className="text-slate-500 font-semibold text-sm">
               No vehicle fleet found for the selected route category.
             </p>
           </div>

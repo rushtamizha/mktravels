@@ -30,45 +30,48 @@ const galleryCategories = [
 const galleryImages = [
   {
     id: 1,
-    title: "Ooty Tea Gardens & Hills",
-    location: "Ooty, Tamil Nadu",
-    category: "hills",
-    src: "/BookingCars/ooty-tour.webp",
+    title: "Ooty Hills & Tea Gardens",
+    src: "/Gallery/ooty.webp",
   },
   {
     id: 2,
-    title: "Isha Yoga Center & Dhyanalinga",
-    location: "Coimbatore, Tamil Nadu",
-    category: "temples",
-    src: "/BookingCars/isha-yoga.webp",
+    title: "Kodaikanal Lake & Hills",
+    src: "/Gallery/kodaikana.webp",
   },
   {
     id: 3,
-    title: "Premium Innova Crysta Fleet",
-    location: "Coimbatore Airport",
-    category: "fleets",
-    src: "/BookingCars/innova-crysta.webp",
+    title: "Munnar Tea Plantations",
+    src: "/Gallery/munar.webp",
   },
   {
     id: 4,
-    title: "Kodaikanal Lake Drive",
-    location: "Kodaikanal, Tamil Nadu",
-    category: "hills",
-    src: "/BookingCars/kodaikanal.webp",
+    title: "Valparai Scenic View",
+    src: "/Gallery/valparai-1.webp",
   },
   {
     id: 5,
-    title: "Madurai Meenakshi Amman Temple",
-    location: "Madurai, Tamil Nadu",
-    category: "temples",
-    src: "/BookingCars/madurai-temple.webp",
+    title: "Wayanad Nature Escape",
+    src: "/Gallery/Wayanad.webp",
   },
   {
     id: 6,
-    title: "Swift Dzire Outstation Cabs",
-    location: "Tamil Nadu Highways",
-    category: "fleets",
-    src: "/BookingCars/swift-dzire.webp",
+    title: "Rameswaram Temple",
+    src: "/Gallery/ramesh.webp",
+  },
+  {
+    id: 7,
+    title: "Guruvayur Temple",
+    src: "/Gallery/guruvayur.webp",
+  },
+  {
+    id: 8,
+    title: "Sabarimala Pilgrimage",
+    src: "/Gallery/sabari-malai-1.webp",
+  },
+  {
+    id: 9,
+    title: "Yercaud Hill Station",
+    src: "/Gallery/yercurd1.webp",
   },
 ];
 
@@ -82,7 +85,7 @@ export default function TravelGallery() {
       : galleryImages.filter((img) => img.category === activeCategory);
 
   return (
-    <section className="w-full bg-white px-4 py-10 pb-20 overflow-hidden text-slate-900 relative">
+    <section className="w-full tracking-wide bg-white px-4 py-10 pb-20 overflow-hidden text-slate-900 relative">
       <div className="max-w-7xl mx-auto  space-y-10">
         
         {/* HEADER BLOCK */}
@@ -125,7 +128,7 @@ export default function TravelGallery() {
             >
               <div
                 onClick={() => setSelectedImage(img)}
-                className="group relative h-72 rounded-[2rem] overflow-hidden bg-slate-900 border border-blu-100 shadow-xs  transition-all duration-500 cursor-pointer"
+                className="group relative h-72 rounded-[2rem] overflow-hidden bg-slate-900  shadow-xs  transition-all duration-500 cursor-pointer"
               >
                 {/* Image */}
                 <Image
@@ -133,11 +136,11 @@ export default function TravelGallery() {
                   alt={img.title}
                   fill
                   sizes="(max-width: 640px) 280px, 340px"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-90 group-hover:opacity-100"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-110  group-hover:opacity-100"
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-950/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-blue-950/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300" />
 
                 {/* Floating Preview Icon */}
                 <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
@@ -146,10 +149,6 @@ export default function TravelGallery() {
 
                 {/* Bottom Content */}
                 <div className="absolute inset-x-0 bottom-0 p-6 text-white space-y-1.5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase   bg-white/10 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/15">
-                    <MapPin className="w-3 h-3 " />
-                    {img.location}
-                  </span>
                   <h3 className="text-lg font-bold text-white  transition-colors line-clamp-1">
                     {img.title}
                   </h3>
@@ -190,17 +189,14 @@ export default function TravelGallery() {
                   src={selectedImage.src}
                   alt={selectedImage.title}
                   fill
-                  className="object-contain"
+                  className="object-cover"
                 />
               </div>
 
-              <div className="p-6 bg-blue-950 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10">
+              <div className="p-6 bg-white text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10">
                 <div className="space-y-1">
-                  <span className="text-xs font-bold uppercase   flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5" />
-                    {selectedImage.location}
-                  </span>
-                  <h3 className="text-xl font-bold">{selectedImage.title}</h3>
+
+                  <h3 className="text-md uppercase text-slate-800 font-bold">{selectedImage.title}</h3>
                 </div>
 
                 <a

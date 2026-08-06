@@ -22,7 +22,7 @@ export default function Footer() {
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 relative h-[260px] sm:h-[340px] w-full flex items-center justify-center">
               <Image
-                src="/travelfamily.png"
+                src="/travelFamily.png"
                 alt="Ready to Travel with MK Travels"
                 fill
                 priority

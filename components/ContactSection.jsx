@@ -48,7 +48,7 @@ export default function ContactSection() {
               <Headphones className="w-3.5 h-3.5" />
               Get In Touch
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-blue-900">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-wide text-blue-900">
               Plan Your Journey <span className="text-orange-600">With Us</span>
             </h2>
           </div>

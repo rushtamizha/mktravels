@@ -59,7 +59,7 @@ const TourPackages = ({ tourpackages }) => {
                       <MapPin className="w-3.5 h-3.5" />
                       Premium South India Tour Packages
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
+                    <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-wide ">
                       Explore the Best South India's <br />
                       <span className="text-orange-600 font-bold">Tour Packages</span>
                     </h2>
@@ -96,7 +96,7 @@ const TourPackages = ({ tourpackages }) => {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" /> 
 
                   {category.routesCount > 0 && (
-                    <span className="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-orange-500 shadow-xs">
+                    <span className="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-orange-500 shadow-xs">
                       <Compass size={12} /> {category.routesCount} Available
                       Routes
                     </span>

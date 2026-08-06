@@ -130,7 +130,7 @@ function VehicleCard({ vehicle, isBestValue, packageLabel, index }) {
             <span className="block text-[10px] font-bold uppercase  text-slate-400">
               All-Inclusive Fare
             </span>
-            <span className="text-2xl font-semibold tracking-tight text-orange-600">
+            <span className="text-2xl font-semibold tracking-wide text-orange-600">
               {vehicle.packageAmount}
             </span>
           </div>
@@ -200,7 +200,7 @@ export default function TourPackageDetailPage() {
         <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-orange-50 text-orange-600">
           <Info className="h-8 w-8" />
         </div>
-        <h1 className="mb-2 text-3xl font-extrabold tracking-tight">Package Not Found</h1>
+        <h1 className="mb-2 text-3xl font-extrabold tracking-wide">Package Not Found</h1>
         <p className="mb-7 max-w-md text-slate-500">
           The requested tour route could not be located in our catalog. It may
           have moved or been renamed.
@@ -244,7 +244,7 @@ export default function TourPackageDetailPage() {
               className="rounded-[2rem]   bg-white   "
             >
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-blue-800">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-blue-800">
                   <Sparkles size={13} /> {selectedCategory?.label}
                 </span>
                 <span className="rounded-full border border-orange-100 bg-orange-50 px-3 py-1 text-[11px] font-bold text-orange-700">
@@ -252,7 +252,7 @@ export default function TourPackageDetailPage() {
                 </span>
               </div>
 
-              <h2 className="mb-3 text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
+              <h2 className="mb-3 text-xl font-extrabold tracking-wide text-slate-900 sm:text-2xl">
                 Tour Overview & Itinerary Highlights
               </h2>
               <p className="leading-relaxed text-slate-600">{selectedPackage.description}</p>
@@ -264,7 +264,7 @@ export default function TourPackageDetailPage() {
             <div className="space-y-4">
               <div className="flex items-center justify-between px-1">
                 <div>
-                  <h3 className="flex items-center gap-2.5 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl">
+                  <h3 className="flex items-center gap-2.5 text-xl font-semibold tracking-wide text-slate-900 sm:text-2xl">
                     <Car className="h-6 w-6 text-blue-800" />
                     Available Fleet & Fixed Fares
                   </h3>
@@ -320,7 +320,7 @@ export default function TourPackageDetailPage() {
             <div className="sticky top-28 space-y-4">
               <div className="space-y-6 rounded-[2rem]  bg-white  ">
                 <div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-widest text-blue-800">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-blue-800">
                     24/7 Desk
                   </span>
                   <h3 className="mt-2 text-xl font-semibold text-slate-900 sm:text-2xl">

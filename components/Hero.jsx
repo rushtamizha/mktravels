@@ -117,7 +117,7 @@ export const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.0 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full max-w-xs sm:w-auto px-8 py-3.5 bg-orange-600/50 hover:bg-orange-600/70 text-white rounded-full font-bold text-xs uppercase tracking-widest shadow-lg shadow-orange-600/30 transition-all flex items-center justify-center gap-3 group border border-orange-400"
+                className="w-full max-w-xs sm:w-auto px-8 py-3.5 bg-orange-600/50 hover:bg-orange-600/70 text-white rounded-full  text-xs uppercase tracking-wide shadow-lg shadow-orange-600/30 transition-all flex items-center justify-center gap-3 group border border-orange-400 font-bold"
               >
                 <Compass
                   size={16}
@@ -138,7 +138,7 @@ export const HeroSection = () => {
               <motion.button
                 whileHover={{ scale: 1.0 }}
                 whileTap={{ scale: 0.99 }}
-                className="w-full max-w-xs sm:w-auto px-8 py-3.5 bg-blue-600/50 hover:bg-blue-600/70 text-white rounded-full font-bold text-xs uppercase tracking-widest shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-3 group border border-blue-400"
+                className="w-full max-w-xs sm:w-auto px-8 py-3.5 bg-blue-600/50 hover:bg-blue-600/70 text-white rounded-full font-bold text-xs uppercase tracking-wide shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-3 group border border-blue-400"
               >
                 <PhoneCall size={15} className="text-white" />
                 Contact Us

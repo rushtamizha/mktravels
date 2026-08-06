@@ -31,7 +31,7 @@ export default function Footer() {
               />
             </div>
             <div className="lg:col-span-6 text-center lg:text-right space-y-4 lg:pl-6">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-wide">
                 Ready to Travel?
               </h2>
 

@@ -48,7 +48,7 @@ export default function ContactSection() {
               <FileIcon className="w-3.5 h-3.5" />
               Get in Touch
             </div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
+            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-wide ">
               Ready to Plan Your Perfect<br />
               <span className="text-orange-600 font-bold">South India Trip?</span>
             </h2>

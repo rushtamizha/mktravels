@@ -70,7 +70,7 @@ const Header = ({ prefix, suffix, description, images }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="mb-2 text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h1 className="mb-2 text-3xl font-bold uppercase tracking-wide text-white sm:text-4xl md:text-5xl">
             {prefix}
             {suffix && <span className="ml-2 text-orange-500">{suffix}</span>}
           </h1>

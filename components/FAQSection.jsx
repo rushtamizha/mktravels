@@ -63,7 +63,7 @@ export default function FAQSection() {
               <FileQuestion className="w-3.5 h-3.5" />
               Frequently Asked Questions
             </div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
+            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-wide ">
               Everything You Need to Know Before <br />
               <span className="text-orange-600 font-bold">Booking Your Tour</span>
             </h2>

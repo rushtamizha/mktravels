@@ -327,7 +327,7 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
               href={whatsappHref}
               target="_blank"
               rel="noreferrer"
-              className="w-full flex items-center justify-center hover:bg-orange-600 bg-blue-800 text-white font-semibold py-3.5 px-4 rounded-xl text-xs uppercase shadow-md transition-all text-center"
+              className="w-full flex items-center justify-center hover:bg-orange-600 bg-blue-800 text-white font-bold py-3.5 px-4 rounded-xl text-xs  shadow-md transition-all text-center"
             >
               Book Ride Instantly
             </a>
@@ -372,7 +372,7 @@ export default function AirportTransfers({ serviceType }) {
             <Car className="w-3.5 h-3.5" />
             Premium Cab Fleet
           </div>
-          <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-tight ">
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-wide ">
             Choose the Perfect Vehicle for <br />
             <span className="text-orange-600 font-bold">Every Journey</span>
           </h2>

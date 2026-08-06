@@ -94,12 +94,12 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-800 shadow-sm backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-blue-800 shadow-sm backdrop-blur-md">
             <Sparkles className="h-3.5 w-3.5 text-orange-600" />
             <span>Get About Us</span>
           </div>
 
-          <h1 className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-5xl tracking-tight leading-tight">
+          <h1 className="mt-4 text-3xl font-extrabold text-slate-900 sm:text-5xl tracking-wide leading-tight">
             We’re Strived Only For The Best In{" "}
             <span className="text-blue-800">South India</span>
           </h1>
@@ -134,7 +134,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
                 
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <p className="text-xs font-bold uppercase tracking-widest text-orange-400">
+                  <p className="text-xs font-bold uppercase tracking-wide text-orange-400">
                     Trusted Travel Agency
                   </p>
                   <h3 className="mt-1 text-xl font-bold text-white">
@@ -156,7 +156,7 @@ export default function About() {
                 </div>
                 <div>
                   <span className="text-2xl font-black text-blue-800 leading-none block">2017</span>
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mt-0.5">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wide block mt-0.5">
                     Since In Travels
                   </span>
                 </div>
@@ -191,11 +191,11 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-6 flex flex-col justify-center"
           >
-            <span className="text-xs font-extrabold uppercase tracking-widest text-orange-600">
+            <span className="text-xs font-extrabold uppercase tracking-wide text-orange-600">
               Who We Are
             </span>
 
-            <h2 className="mt-2 text-2xl font-extrabold text-slate-900 sm:text-4xl tracking-tight">
+            <h2 className="mt-2 text-2xl font-extrabold text-slate-900 sm:text-4xl tracking-wide">
               Trusted Travel Agency Dedicated To Excellence
             </h2>
 
@@ -247,10 +247,10 @@ export default function About() {
           className="mt-20 sm:mt-28"
         >
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-orange-600">
+            <span className="text-xs font-extrabold uppercase tracking-wide text-orange-600">
               Why MK Travels Best
             </span>
-            <h3 className="mt-2 text-2xl font-extrabold text-slate-900 sm:text-4xl tracking-tight">
+            <h3 className="mt-2 text-2xl font-extrabold text-slate-900 sm:text-4xl tracking-wide">
               Six Reasons To Travel With Us
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-slate-500">
@@ -292,7 +292,7 @@ export default function About() {
         >
           <div className="relative z-10 flex flex-col items-center text-center lg:flex-row lg:text-left lg:justify-between gap-6">
             <div className="max-w-2xl">
-              <p className="text-xs font-bold uppercase tracking-widest text-orange-400">
+              <p className="text-xs font-bold uppercase tracking-wide text-orange-400">
                 24/7 Dedicated Support
               </p>
               <h3 className="mt-1 text-2xl font-extrabold sm:text-3xl text-white">

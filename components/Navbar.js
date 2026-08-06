@@ -226,7 +226,7 @@ export default function Navbar() {
         <div className="hidden items-center lg:flex px-2">
           <button
             onClick={() => router.push("/contact")}
-            className="rounded-full bg-orange-600 px-6 py-2.5 text-[13px] font-semibold text-white shadow-md shadow-emerald-900/10 hover:bg-orange-600/90 hover:shadow-lg transition-all active:scale-95"
+            className="rounded-full bg-blue-800 px-6 py-2.5 text-[13px]  text-white shadow-md  hover:bg-orange-600 hover:shadow-lg transition-all active:scale-95 font-bold"
           >
             Book Appointment
           </button>

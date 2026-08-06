@@ -85,8 +85,6 @@ const TourPackages = ({ tourpackages }) => {
               className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-gray-50 bg-white shadow-2xs transition-all duration-300 hover:shadow-sm"
             >
               <Link href={href} className="block">
-                {/* Image — only the first row gets `priority`, and sizes matches the
-                    actual rendered width per breakpoint instead of a wasteful 100vw. */}
                 <div className="relative h-55 w-full overflow-hidden bg-slate-100">
                   <Image
                     fill

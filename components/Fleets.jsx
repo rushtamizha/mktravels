@@ -337,11 +337,8 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
 // Main Section Component (Supports Prop & URL Params)
 // ---------------------------------------------------------------------------
 export default function AirportTransfers({ serviceType }) {
-  const searchParams = useSearchParams();
 
-  // Read from prop OR search parameter (e.g. ?type=local-duty or ?fare=onewayfixed)
-  const rawParam =
-    serviceType || searchParams.get("type") || searchParams.get("fare");
+  const rawParam = serviceType
 
   const targetFareMode = useMemo(
     () => normalizeFareParam(rawParam),

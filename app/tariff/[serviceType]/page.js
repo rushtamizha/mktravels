@@ -2,7 +2,6 @@ import AirportTransfers from '@/components/Fleets';
 import React from 'react';
 
 export default async function Page({ params }) {
-  // Await params for Next.js 15+ compatibility
   const resolvedParams = await params;
   const serviceType = resolvedParams?.serviceType;
 

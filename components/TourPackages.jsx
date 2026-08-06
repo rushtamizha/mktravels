@@ -81,10 +81,10 @@ const TourPackages = ({ tourpackages }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: Math.min(idx * 0.08, 0.4) }}
-              className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-gray-50 bg-white shadow-2xs transition-all duration-300 hover:shadow-sm"
+              className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-orange-100 bg-gradient-to-br from-orange-50 hover:from-blue-50 hover:border-blue-100 shadow-2xs transition-all duration-300 hover:shadow-xs"
             >
               <Link href={href} className="block">
-                {category.tourThumbnail &&  <div className="relative h-55 w-full overflow-hidden bg-slate-100">
+                {category.tourThumbnail &&  <div className="relative h-55 w-full overflow-hidden ">
                   <Image
                     fill
                     priority={idx < 3}
@@ -104,7 +104,7 @@ const TourPackages = ({ tourpackages }) => {
                 </div> }
 
                 <div className="p-6">
-                  <h3 className="mb-1 text-lg font-semibold text-slate-900 transition-colors group-hover:text-blue-800">
+                  <h3 className="mb-1 text-lg font-semibold text-slate-900 transition-colors group-hover:text-blue-800 ">
                     {category.label}
                   </h3>
                   <p className=" text-xs font-normal  md:text-base leading-relaxed text-slate-500">

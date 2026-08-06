@@ -9,10 +9,10 @@ const page = () => {
     (item) => item.label?.toLowerCase() === "temple packages",
   );
   return (
-    <section className="w-full bg-white capitalize text-slate-900 pb-20">
+    <section className="w-full bg-white capitalize text-slate-900 ">
       <Header
         prefix="Temple" suffix="Packages"
-        description="Browse through our curated collection of same-day escapes, multi-day hill station getaways, and sacred temple pilgrimages across South India with fixed per-vehicle rates."
+        description="Embark on divine spiritual journeys to Rameshwaram, Madurai Meenakshi Amman, Kanyakumari, Tirupati, and the Aarupadai Veedu circuits. Experience peaceful temple visits with punctual, respectful drivers and well-planned, stress-free itineraries."
       />
       <TourPackages tourpackages={tourPackagesNav.dropdown} />
     </section>

@@ -228,7 +228,9 @@ export default function TourPackageDetailPage() {
 
   return (
     <main className="w-full bg-white pb-28 text-slate-900">
-        <Header/>
+        <Header  prefix="Select Your"
+        suffix=" Taxi & Bus"
+        description="From comfortable 4-seater Sedans and spacious 7-seater MUVs to luxury Tempo Travellers. All vehicles are sanitized, well-maintained, and driven by experienced route experts for outstation travel across South India." />
       <div className="mx-auto py-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Main column */}

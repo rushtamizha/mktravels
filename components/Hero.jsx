@@ -89,7 +89,7 @@ export const HeroSection = () => {
           </motion.div>
 
           {/* MAIN HEADING */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-white leading-[1.02] tracking-tight uppercase mb-6 drop-shadow-sm">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.02] tracking-tight uppercase mb-6 drop-shadow-sm">
             {companyInfo.companyName.split(" ").slice(0, 1)}{" "}
             <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 bg-clip-text text-transparent">
               {companyInfo.companyName.split(" ").slice(1).join(" ")}

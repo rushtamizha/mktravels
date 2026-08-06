@@ -84,7 +84,7 @@ const TourPackages = ({ tourpackages }) => {
               className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-gray-50 bg-white shadow-2xs transition-all duration-300 hover:shadow-sm"
             >
               <Link href={href} className="block">
-                <div className="relative h-55 w-full overflow-hidden bg-slate-100">
+                {category.tourThumbnail &&  <div className="relative h-55 w-full overflow-hidden bg-slate-100">
                   <Image
                     fill
                     priority={idx < 3}
@@ -92,8 +92,8 @@ const TourPackages = ({ tourpackages }) => {
                     src={category.tourThumbnail || FALLBACK_IMAGE }
                     alt={category.label || "Tour Package"}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                  /> 
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" /> 
 
                   {category.routesCount > 0 && (
                     <span className="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-orange-500 shadow-xs">
@@ -101,7 +101,7 @@ const TourPackages = ({ tourpackages }) => {
                       Routes
                     </span>
                   )}
-                </div>
+                </div> }
 
                 <div className="p-6">
                   <h3 className="mb-1 text-lg font-semibold text-slate-900 transition-colors group-hover:text-blue-800">
@@ -119,7 +119,7 @@ const TourPackages = ({ tourpackages }) => {
                     <p className="text-[10px] font-bold uppercase  text-slate-400">
                       Package Starts From
                     </p>
-                    <p className="text-lg font-semibold text-orange-600">
+                    <p className="text-lg font-bold text-orange-600">
                       {category.startingPrice
                         ? `Rs. ${category.startingPrice.toLocaleString("en-IN")}`
                         : "Contact Us"}

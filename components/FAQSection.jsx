@@ -36,7 +36,7 @@ const faqData = [
     id: "04",
     question: "How can I book a vehicle or tour package?",
     answer:
-      "You can book directly by clicking the 'Book Ride Instantly' button on any vehicle card, messaging us on WhatsApp (+91 94894 85353), or submitting your requirement via our contact page.",
+      "You can book directly by clicking the 'Book Ride Instantly' button on any vehicle card, messaging us on WhatsApp (+91 8754142281), or submitting your requirement via our contact page.",
   },
   {
     id: "05",
@@ -174,7 +174,7 @@ export default function FAQSection() {
                 </Link>
 
                 <a
-                  href="https://wa.me/919489485353?text=Hi%2C%20I%20have%20a%20question%20about%20your%20travel%20services"
+                  href="https://wa.me/918754142281?text=Hi%2C%20I%20have%20a%20question%20about%20your%20travel%20services"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white border border-white/15 font-bold text-xs uppercase  py-3.5 px-6 rounded-full backdrop-blur-md transition-all duration-300"

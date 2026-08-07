@@ -186,7 +186,7 @@ export default function TravelGallery() {
                 </div>
 
                 <a
-                  href="https://wa.me/919489485353?text=Hi%2C%20I%20want%20to%20plan%20a%20trip%20to%20this%20destination"
+                  href="https://wa.me/918754142281?text=Hi%2C%20I%20want%20to%20plan%20a%20trip%20to%20this%20destination"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-orange-600 hover:bg-orange-500 text-white font-extrabold text-xs uppercase  py-3 px-6 rounded-full shadow-lg transition-all"

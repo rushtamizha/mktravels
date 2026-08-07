@@ -344,7 +344,7 @@ export default function TourPackageDetailPage() {
                     <MessageCircle size={16} /> Book via WhatsApp
                   </a>
                   <a
-                    href="tel:+919000000000"
+                    href="tel:+918754142281"
                     className="flex w-full items-center justify-center gap-2.5 rounded-full bg-blue-800 px-6 py-4 text-center text-sm font-bold text-white transition-colors active:scale-[0.98] hover:bg-orange-600"
                   >
                     <PhoneCall size={16} /> Call Customer Support

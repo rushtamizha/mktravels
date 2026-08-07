@@ -31,7 +31,7 @@ export default function ContactSection() {
 
     // Construct WhatsApp message URL
     const textMessage = `*New Travel Inquiry*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Service:* ${formData.serviceType}%0A*Message:* ${formData.message}`;
-    const waUrl = `https://wa.me/919489485353?text=${textMessage}`;
+    const waUrl = `https://wa.me/918754142281?text=${textMessage}`;
 
     // Open WhatsApp
     window.open(waUrl, "_blank");
@@ -83,7 +83,7 @@ export default function ContactSection() {
                       Location
                     </h4>
                     <p className="text-sm font-semibold text-slate-200 mt-0.5">
-                      Coimbatore, Tamil Nadu & South India
+                       22prg, Street, Brindhavan Nagar, Civil Aerodrome Post, Coimbatore, Tamil Nadu 641014
                     </p>
                   </div>
                 </div>
@@ -97,10 +97,10 @@ export default function ContactSection() {
                       Phone Number
                     </h4>
                     <a
-                      href="tel:+919489485353"
+                      href="tel:+918754142281"
                       className="text-sm font-semibold text-slate-200 hover:text-orange-400 transition-colors mt-0.5 block"
                     >
-                      +91 94894 85353
+                      +91 8754142281
                     </a>
                   </div>
                 </div>
@@ -114,10 +114,10 @@ export default function ContactSection() {
                       Email Address
                     </h4>
                     <a
-                      href="mailto:info@mktravels.com"
+                      href="mailto:mktravelscbe@gmail.com"
                       className="text-sm font-semibold text-slate-200 hover:text-orange-400 transition-colors mt-0.5 block"
                     >
-                      info@mktravels.com
+                      mktravelscbe@gmail.com
                     </a>
                   </div>
                 </div>
@@ -141,7 +141,7 @@ export default function ContactSection() {
             {/* Quick WhatsApp Action */}
             <div className="relative z-10 pt-8  space-y-3">
               <a
-                href="https://wa.me/919489485353?text=Hi%2C%20I%20would%20like%20to%20book%20a%20ride"
+                href="https://wa.me/918754142281?text=Hi%2C%20I%20would%20like%20to%20book%20a%20ride"
                 target="_blank"
                 rel="noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase  py-4 px-6 rounded-2xl shadow-lg transition-all duration-300"

@@ -209,7 +209,7 @@ function VehicleFareCard({ vehicle, targetFareMode }) {
     )} (${formatINR(heroPrice)})`;
   }
 
-  const whatsappHref = `https://wa.me/919489485353?text=${encodeURIComponent(
+  const whatsappHref = `https://wa.me/918754142281?text=${encodeURIComponent(
     `Hi, I want to book the ${bookingContext}`,
   )}`;
 

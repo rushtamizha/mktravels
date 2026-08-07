@@ -6,6 +6,7 @@ import { ArrowUpRight, Compass, MapPin, MessageCircle, Sparkles } from "lucide-r
 import Link from "next/link";
 import Image from "next/image";
 import { navItems } from "@/lib/data";
+import { div } from "framer-motion/client";
 
 const FALLBACK_IMAGE = "/heroSection/coimbatore-tour-package-1.webp";
 
@@ -45,7 +46,8 @@ const TourPackages = ({ tourpackages }) => {
   if (!categories.length) return null;
 
   return (
-    <section className=" mx-auto tracking-wide max-w-7xl px-4 xl:px-0 py-10">
+   <div className=" tracking-wide  px-4 py-10">
+     <section className="max-w-7xl mx-auto">
       {/* Section header */}
       <motion.div
         initial={{ opacity: 0, y: 15 }}
@@ -54,7 +56,7 @@ const TourPackages = ({ tourpackages }) => {
         transition={{ duration: 0.5 }}
         className="mb-10 flex max-w-3xl flex-col items-start space-y-3 text-left"
       >
-        <div className="space-y-2">
+        <div className="space-y-2 ">
                     <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-800/30 py-1.5 rounded-full w-max bg-blue-50 text-blue-800">
                       <MapPin className="w-3.5 h-3.5" />
                       Premium South India Tour Packages
@@ -139,6 +141,7 @@ const TourPackages = ({ tourpackages }) => {
         })}
       </div>
     </section>
+   </div>
   );
 };
 

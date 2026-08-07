@@ -1,33 +1,34 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import {
   MessageCircle,
   Star,
   CheckCircle2,
-  MapPin,
   ExternalLink,
 } from "lucide-react";
-companyInfo
+
 // Import Swiper styling production layers
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Image from "next/image";
-import { companyInfo,FALLBACK_REVIEWS } from "@/lib/data";
+
+import { companyInfo, FALLBACK_REVIEWS } from "@/lib/data";
 
 export default function Testimonials() {
   const [reviews, setReviews] = useState(FALLBACK_REVIEWS);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Link to your Google My Business / Google Maps Place Review Page
+  // Clean, working Google Review Place ID URL
+  const gmbPlaceId = "ChIJlRUTqCAbBzsGRCSxw5Azi04";
   const gmbReviewUrl =
-    companyInfo.googleBusinessUrl ||
-    `https://search.google.com/local/writereview?placeid=${process.env.NEXT_PUBLIC_GMB_PLACE_ID || "ChIJlRUTqCAbBzsRGcSxw5ozi04"}`;
+    companyInfo?.googleBusinessUrl ||
+    `https://search.google.com/local/writereview?placeid=${gmbPlaceId}`;
 
-  // Fetch Reviews dynamically from GMB API endpoint
+  // Fetch Reviews dynamically from GMB API endpoint with local fallback
   useEffect(() => {
     async function fetchGmbReviews() {
       try {
@@ -35,7 +36,6 @@ export default function Testimonials() {
         const res = await fetch("/api/google-reviews");
         if (res.ok) {
           const data = await res.json();
-          console.log(data);
           if (data?.reviews && data.reviews.length > 0) {
             setReviews(data.reviews);
           }
@@ -43,7 +43,7 @@ export default function Testimonials() {
       } catch (error) {
         console.error(
           "Failed to fetch Google My Business reviews, loading fallbacks:",
-          error,
+          error
         );
       } finally {
         setIsLoading(false);
@@ -54,18 +54,16 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="w-full tracking-wide bg-white py-10  px-4  text-slate-800 relative overflow-hidden">
-
-
+    <section className="w-full tracking-wide bg-white py-10 px-4 text-slate-800 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* SECTION HEADER BLOCK */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 font-extrabold text-xs uppercase  px-3.5 border border-blue-800/30 py-1.5 rounded-full w-max bg-blue-50 text-blue-800">
-              <MessageCircle className="w-3.5 h-3.5" />
+            <div className="flex items-center gap-2 font-extrabold text-xs uppercase px-3.5 border border-blue-800/30 py-1.5 rounded-full w-max bg-blue-50 text-blue-800">
+              <MessageCircle className="w-3.5 h-3.5 text-blue-800" />
               Verified Google Reviews
             </div>
-            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-wide ">
+            <h2 className="text-2xl md:text-3xl font-semibold text-slate-800 tracking-wide">
               Trusted By Thousands <br />
               <span className="text-orange-600 font-bold">Of Travelers</span>
             </h2>
@@ -75,13 +73,13 @@ export default function Testimonials() {
             </p>
           </div>
 
-          {/* REDIRECT CTA TO GMB BUSINESS PAGE */}
+          {/* REDIRECT CTA TO GMB REVIEW FORM */}
           <div className="shrink-0">
             <a
               href={gmbReviewUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2.5 bg-white text-[#1a73e8] hover:bg-[#f8f9fa] hover:text-[#174ea6] border border-[#dadce0] font-semibold text-xs py-2.5 px-4 rounded-full shadow-2xs hover:shadow-xs transition-all tracking-wide"
+              className="inline-flex items-center gap-2.5 bg-white text-[#1a73e8] hover:bg-[#f8f9fa] hover:text-[#174ea6] border border-[#dadce0] font-semibold text-xs py-2.5 px-4 rounded-full shadow-sm hover:shadow-md transition-all tracking-wide"
             >
               {/* Authentic 4-Color Google "G" Icon */}
               <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
@@ -113,7 +111,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* SWIPER CAROUSEL SHELF */}
+        {/* SWIPER CAROUSEL */}
         <div className="relative">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
@@ -132,23 +130,20 @@ export default function Testimonials() {
             {reviews.map((review) => (
               <SwiperSlide key={review.id} className="h-auto">
                 <div className="bg-white border border-slate-100 rounded-[2rem] p-6 md:p-8 flex flex-col h-full justify-between transition-all duration-300 hover:bg-white shadow-xs hover:shadow-xs hover:border-slate-200 m-0.5 relative group">
-                  {/* Real Google Brand Logo Badge */}
+                  {/* Google Brand Logo Badge */}
                   <div className="absolute right-4 top-3 bg-white/95 backdrop-blur-xs border border-slate-200/90 py-1.5 px-3 rounded-2xl shadow-xs group-hover:shadow-md transition-all duration-300 flex items-center gap-2.5 z-10">
-                    {/* Your Brand Logo */}
                     <Image
-                      height={5} width={100}
+                      width={80}
+                      height={20}
                       priority
                       unoptimized
-                      sizes="100vw"
                       src="https://www.wepzite.in/logo.png"
                       alt="Wepzite Logo"
                       className="h-5 w-auto object-contain shrink-0 rounded-2xl"
                     />
 
-                    {/* Subtle Vertical Divider */}
                     <span className="h-3.5 w-px bg-slate-300/80 shrink-0" />
 
-                    {/* Google Badge Group */}
                     <div className="flex items-center gap-1.5 shrink-0">
                       <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                         <path
@@ -174,9 +169,9 @@ export default function Testimonials() {
                     </div>
                   </div>
 
-                  {/* Card Content Top Shelf */}
-                  <div className="space-y-4 relative z-10">
-                    {/* Star Rating Row */}
+                  {/* Card Content */}
+                  <div className="space-y-4 relative z-10 pt-2">
+                    {/* Star Rating */}
                     <div className="flex items-center gap-1">
                       {[...Array(review.rating || 5)].map((_, i) => (
                         <Star
@@ -186,27 +181,27 @@ export default function Testimonials() {
                       ))}
                     </div>
 
-                    {/* Main Comment Quote Text */}
-                    <p className="text-slate-700 text-sm md:text-base font-semibold leading-relaxed pr-8">
-                      "{review.comment.slice(0, 100)}..."
+                    {/* Review Text */}
+                    <p className="text-slate-700 text-sm md:text-base font-semibold leading-relaxed pr-6">
+                      "{review.comment.length > 110 ? `${review.comment.slice(0, 110)}...` : review.comment}"
                     </p>
                   </div>
 
-                  {/* Card Footer Bio Block */}
+                  {/* Card Footer Bio */}
                   <div className="pt-5 mt-6 border-t border-slate-100 flex flex-col gap-3 relative z-10">
                     <div className="flex items-center gap-3">
                       {review.authorPhoto ? (
                         <Image
-                          height={10}width={10}
+                          width={40}
+                          height={40}
                           priority
                           unoptimized
-                          sizes="100vw"
                           src={review.authorPhoto}
-                          alt={review.authorName}
+                          alt={review.authorName || "Reviewer"}
                           className="w-10 h-10 rounded-full object-cover shadow-xs border border-slate-200 shrink-0"
                         />
                       ) : (
-                        <div className="w-10 h-10 rounded-full  font-semibold flex items-center justify-center text-sm shadow-xs shrink-0 text-[#bc3908]">
+                        <div className="w-10 h-10 rounded-full bg-orange-100 font-bold flex items-center justify-center text-sm shadow-xs shrink-0 text-[#bc3908]">
                           {review.authorName
                             ? review.authorName.charAt(0)
                             : "G"}
@@ -218,7 +213,7 @@ export default function Testimonials() {
                           {review.authorName}
                           <CheckCircle2 className="w-4 h-4 text-emerald-800 fill-emerald-500/10 shrink-0" />
                         </h4>
-                        <span className="block text-[11px] text-slate-400 font-semibold uppercase ">
+                        <span className="block text-[11px] text-slate-400 font-semibold uppercase">
                           {review.location ? `${review.location} • ` : ""}
                           {review.relativeTime || "Verified Google Review"}
                         </span>

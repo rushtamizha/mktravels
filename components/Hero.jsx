@@ -104,7 +104,7 @@ export const HeroSection = () => {
             </span>
             , offering luxury cabs and tour packages with active hubs in{" "}
             <span className="text-white font-semibold">
-              Pollachi, Coimbatore, and Cochin.
+              Coimbatore.
             </span>
           </p>
 
@@ -160,7 +160,7 @@ export const HeroSection = () => {
               HQ Location
             </p>
             <p className="text-white text-xs font-bold uppercase ">
-              Valparai & Coimbatore, TN
+              Coimbatore, TN
             </p>
           </div>
         </div>

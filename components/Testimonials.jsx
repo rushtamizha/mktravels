@@ -76,7 +76,7 @@ export default function Testimonials() {
           {/* REDIRECT CTA TO GMB REVIEW FORM */}
           <div className="shrink-0">
             <a
-              href={gmbReviewUrl}
+              href='https://maps.app.goo.gl/ugvTfQG2zp46H2Nv8'
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2.5 bg-white text-[#1a73e8] hover:bg-[#f8f9fa] hover:text-[#174ea6] border border-[#dadce0] font-semibold text-xs py-2.5 px-4 rounded-full shadow-sm hover:shadow-md transition-all tracking-wide"

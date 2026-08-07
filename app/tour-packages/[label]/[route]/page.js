@@ -34,7 +34,7 @@ const getVehicleImage = (vehicle = {}) => {
   if (vehicle.carImages) return vehicle.carImages;
   console.log(vehicle)
   const name = (vehicle.name || "").toLowerCase();
-  if (name.includes("dzire") || name.includes("etios") || name.includes("ciaz") || name.includes("verito") || name.includes("zest"))
+  if (name.includes("dzire") || name.includes("etios") || name.includes("ciaz")  || name.includes("zest"))
     return "/images/vehicles/sedan.webp";
   if (name.includes("ertiga")) return "/images/vehicles/ertiga.webp";
   if (name.includes("crysta") || name.includes("hycross")) return "/images/vehicles/crysta.webp";

@@ -114,13 +114,7 @@ export const metadata = {
     creator: "@mktravels",
   },
 
-  // Search engine / site verification (fill in your own IDs)
-  verification: {
-    google: "REPLACE_WITH_GOOGLE_SITE_VERIFICATION_CODE",
-    other: {
-      "msvalidate.01": "REPLACE_WITH_BING_VERIFICATION_CODE",
-    },
-  },
+
 
   // Mobile / theming
   themeColor: "#0f4c3a",

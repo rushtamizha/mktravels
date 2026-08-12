@@ -12,7 +12,6 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { navItems } from "@/lib/data";
-import { div } from "framer-motion/client";
 
 const FALLBACK_IMAGE = "/heroSection/coimbatore-tour-package-1.webp";
 

@@ -121,7 +121,7 @@ function VehicleCard({ vehicle, isBestValue, packageLabel, index }) {
           </div>
 
           <a
-            href={`https://wa.me/?text=${encodeURIComponent(whatsappMsg)}`}
+            href={`https://wa.me/918754142281?text=${encodeURIComponent(whatsappMsg)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-blue-800 px-5 py-3 text-xs font-bold text-white shadow-md shadow-blue-900/10 transition-all duration-300 hover:bg-orange-600 hover:shadow-orange-900/20 active:scale-95 sm:text-sm"
@@ -301,7 +301,7 @@ export default function TourPackageDetailClient({ categorySlug, routeSlug }) {
 
                 <div className="space-y-3">
                   <a
-                    href={`https://wa.me/?text=${encodeURIComponent(
+                    href={`https://wa.me/918754142281?text=${encodeURIComponent(
                       `Hi, I am interested in booking the "${selectedPackage.label}" tour package.`
                     )}`}
                     target="_blank"

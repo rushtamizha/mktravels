@@ -111,7 +111,7 @@ export const HeroSection = () => {
           {/* ACTION BUTTONS */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
             <Link
-              href="/packages"
+              href="/tour-packages"
               className="w-full sm:w-auto flex justify-center"
             >
               <motion.button

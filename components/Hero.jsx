@@ -64,7 +64,7 @@ export function HeroSection() {
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
             <Link
               href="/tour-packages"
-              className="group inline-flex w-full max-w-xs items-center justify-center gap-2.5 rounded-full border border-orange-400 bg-orange-600 px-7 py-3.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg shadow-orange-900/30 transition-colors hover:bg-orange-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto"
+              className="group inline-flex w-full max-w-sm items-center justify-center gap-2.5 rounded-full border border-orange-400 bg-orange-600 px-7 py-3.5 text-[16px] font-bold uppercase tracking-wide text-white shadow-lg shadow-orange-900/30 transition-colors hover:bg-orange-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto"
             >
               <Compass className="h-4 w-4 transition-transform group-hover:rotate-45" aria-hidden="true" />
               Explore Packages
@@ -73,7 +73,7 @@ export function HeroSection() {
 
             <a
               href="tel:+918754142281"
-              className="inline-flex w-full max-w-xs items-center justify-center gap-2.5 rounded-full border border-white/25 bg-white/10 px-7 py-3.5 text-xs font-bold uppercase tracking-wide text-white backdrop-blur-md transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto"
+              className="inline-flex w-full max-w-sm items-center justify-center gap-2.5 rounded-full border border-white/25 bg-blue-800 px-7 py-3.5 text-[16px] font-bold uppercase tracking-wide text-white backdrop-blur-md transition-colors hover:bg-blue-700/95 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto"
             >
               Call +91 87541 42281
             </a>

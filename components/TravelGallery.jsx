@@ -85,7 +85,7 @@ export default function TravelGallery() {
       : galleryImages.filter((img) => img.category === activeCategory);
 
   return (
-    <section className="w-full tracking-wide bg-white px-4 py-10 pb-20 overflow-hidden text-slate-900 relative">
+    <section className="w-full tracking-wide bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden text-slate-900 relative">
       <div className="max-w-7xl mx-auto  space-y-10">
         
 

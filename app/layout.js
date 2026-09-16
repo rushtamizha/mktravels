@@ -1,16 +1,23 @@
 import "./globals.css";
+import { Manrope } from "next/font/google";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import TravelGallery from "@/components/TravelGallery";
 import ContactButton from "@/components/Whatsapp";
 
-import "./globals.css";
-import { Inter } from "next/font/google";
+// Self-hosted by next/font: no external stylesheet, no render-blocking RTT,
+// and `display: swap` + automatic size-adjust fallback keeps CLS at 0.
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700", "800"],
+  fallback: ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto"],
+});
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
-
-const SITE_URL = "https://www.mktravelscoimbatore.com"; // TODO: replace with your live domain
+const SITE_URL = "https://www.mktravelscoimbatore.com";
 const SITE_NAME = "MK Travels";
 const TITLE =
   "MK Travels Coimbatore | Cab Booking, Tour Packages & Airport Taxi Tamil Nadu";
@@ -46,22 +53,15 @@ export const metadata = {
   keywords: KEYWORDS,
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME, url: SITE_URL }],
-  generator: "Next.js",
   referrer: "origin-when-cross-origin",
   creator: SITE_NAME,
   publisher: SITE_NAME,
   category: "Travel",
 
-  // Canonical + hreflang
   alternates: {
     canonical: "/",
-    languages: {
-      "en-IN": "/",
-      "ta-IN": "/ta",
-    },
   },
 
-  // Robots / crawling
   robots: {
     index: true,
     follow: true,
@@ -75,18 +75,22 @@ export const metadata = {
     },
   },
 
-  // Icons / manifest
+  // Paths below are the files that actually exist in /public.
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      {
+        url: "/web-app-manifest-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-  manifest: "/manifest.webmanifest",
+  manifest: "/site.webmanifest",
 
-  // Open Graph
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -98,13 +102,12 @@ export const metadata = {
       {
         url: "/og-image.png",
         width: 1200,
-        height: 630,
+        height: 800,
         alt: "MK Travels - Premium Cabs & South India Tour Packages",
       },
     ],
   },
 
-  // Twitter Card
   twitter: {
     card: "summary_large_image",
     title: TITLE,
@@ -114,11 +117,6 @@ export const metadata = {
     creator: "@mktravels",
   },
 
-
-
-  // Mobile / theming
-  themeColor: "#0f4c3a",
-  colorScheme: "light",
   formatDetection: {
     telephone: true,
     email: true,
@@ -126,14 +124,19 @@ export const metadata = {
   },
 };
 
+// themeColor / colorScheme belong here, not in `metadata` — Next 16 warns
+// and drops them otherwise.
 export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  colorScheme: "light",
   themeColor: "#0f4c3a",
 };
 
-// JSON-LD structured data: TravelAgency / LocalBusiness + FAQPage
+// JSON-LD: organization + site. The FAQPage graph lives on the home page
+// instead of here — emitting it site-wide made every route claim FAQs it
+// does not render, which Google flags as mismatched structured data.
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
@@ -155,6 +158,27 @@ const localBusinessSchema = {
     postalCode: "641014",
     addressCountry: "IN",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 11.0301,
+    longitude: 77.0434,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  ],
   areaServed: [
     "Coimbatore",
     "Pollachi",
@@ -212,63 +236,44 @@ const localBusinessSchema = {
   ],
 };
 
-const faqSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "What types of vehicles do you provide?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "We offer a wide range of well-maintained vehicles including 4-seater sedans (Swift Dzire, Toyota Etios), luxury sedans (Suzuki Ciaz), 7-seater SUVs (Innova, Innova Crysta, Hycross, Xylo), and 14 to 25-seater tempo travellers/coaches for large groups.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you provide tour guides for South India trips?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Contact our team for tour guide options across South India destinations.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can I book a vehicle for local pickup and drop in Coimbatore?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, MK Travels offers local hourly duty packages (8 & 10 hrs) for pickup and drop within Coimbatore.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How can I book a vehicle or tour package?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "You can book instantly through our website, call us, or reach out via WhatsApp.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do you require advance booking?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Advance booking is recommended, especially for multi-day tour packages, though last-minute bookings are accommodated when possible.",
-      },
-    },
-  ],
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: SITE_NAME,
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  inLanguage: "en-IN",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-IN">
+    <html
+      lang="en-IN"
+      className={manrope.variable}
+      data-scroll-behavior="smooth"
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        {/* Cloudinary serves the fleet images; warming the connection early
+            removes a DNS+TLS round trip from those requests. */}
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      </head>
+      <body className="bg-white text-slate-900 antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[1000] focus:rounded-full focus:bg-blue-900 focus:px-5 focus:py-3 focus:text-sm focus:font-bold focus:text-white"
+        >
+          Skip to main content
+        </a>
+
+        <Navbar />
+        <main id="main-content">{children}</main>
+        <Testimonials />
+        <TravelGallery />
+        <Footer />
+        <ContactButton />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -277,16 +282,8 @@ export default function RootLayout({ children }) {
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-      </head>
-      <body className={inter.className}>
-        <Navbar />
-        {children}
-        <Testimonials />
-        <TravelGallery />
-        <Footer />
-        <ContactButton />
       </body>
     </html>
   );

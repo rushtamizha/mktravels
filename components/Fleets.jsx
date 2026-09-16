@@ -363,7 +363,7 @@ export default function AirportTransfers({ serviceType }) {
   return (
     <section
       id="fleets"
-      className="w-full bg-white py-10 px-4  text-slate-900 relative"
+      className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 text-slate-900 relative"
     >
       <div className="max-w-7xl mx-auto">
         {/* HEADER BLOCK */}

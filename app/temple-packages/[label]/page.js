@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 import { navItems } from "@/lib/data";
 import DynamicTourPackageClient from "@/components/DynamicTourPackageClient";
 
@@ -60,5 +62,10 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const { label } = await params;
+
+  // Unknown slugs used to render a "not found" panel with a 200 status —
+  // a soft 404. Returning a real 404 keeps these out of the index.
+  if (!findMatchedCategory(label)) notFound();
+
   return <DynamicTourPackageClient label={label} />;
 }

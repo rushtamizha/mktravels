@@ -20,38 +20,7 @@ import { companyInfo, FALLBACK_REVIEWS } from "@/lib/data";
 
 export default function Testimonials() {
   const [reviews, setReviews] = useState(FALLBACK_REVIEWS);
-  const [isLoading, setIsLoading] = useState(false);
 
-  // Clean, working Google Review Place ID URL
-  const gmbPlaceId = "ChIJlRUTqCAbBzsGRCSxw5Azi04";
-  const gmbReviewUrl =
-    companyInfo?.googleBusinessUrl ||
-    `https://search.google.com/local/writereview?placeid=${gmbPlaceId}`;
-
-  // Fetch Reviews dynamically from GMB API endpoint with local fallback
-  useEffect(() => {
-    async function fetchGmbReviews() {
-      try {
-        setIsLoading(true);
-        const res = await fetch("/api/google-reviews");
-        if (res.ok) {
-          const data = await res.json();
-          if (data?.reviews && data.reviews.length > 0) {
-            setReviews(data.reviews);
-          }
-        }
-      } catch (error) {
-        console.error(
-          "Failed to fetch Google My Business reviews, loading fallbacks:",
-          error
-        );
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchGmbReviews();
-  }, []);
 
   return (
     <section className="w-full tracking-wide bg-white py-10 px-4 text-slate-800 relative overflow-hidden">

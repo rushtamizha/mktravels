@@ -6,7 +6,6 @@ import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { navItems } from "@/lib/data";
 
 /**
@@ -65,11 +64,10 @@ const Header = ({ prefix, suffix, description, images }) => {
 
       {/* Content */}
       <div className="container relative z-20 px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        {/* CSS entrance rather than framer-motion: an `opacity: 0` start
+            keeps this <h1> — the LCP element on every inner page —
+            unpainted until hydration finishes. */}
+        <div className="animate-hero-in">
           <h1 className="mb-2 text-3xl font-bold uppercase tracking-wide text-white sm:text-4xl md:text-5xl">
             {prefix}
             {suffix && <span className="ml-2 text-orange-500">{suffix}</span>}
@@ -79,7 +77,7 @@ const Header = ({ prefix, suffix, description, images }) => {
               {description}
             </p>
           )}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

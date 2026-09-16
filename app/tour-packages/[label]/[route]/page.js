@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 import { navItems } from "@/lib/data";
 import TourPackageDetailClient from "@/components/TourPackageDetailClient";
 
@@ -94,5 +96,10 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }) {
   const { label, route } = await params;
+
+  // Real 404 instead of a 200 "not found" panel, so unknown routes are not
+  // indexed as thin duplicate pages.
+  if (!findPackage(label, route).selectedPackage) notFound();
+
   return <TourPackageDetailClient categorySlug={label} routeSlug={route} />;
 }

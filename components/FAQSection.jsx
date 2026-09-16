@@ -54,7 +54,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full bg-white py-10 px-4 tracking-wide text-slate-900">
+    <section className="w-full bg-white py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 tracking-wide text-slate-900">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* HEADER BLOCK */}
        

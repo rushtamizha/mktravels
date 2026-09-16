@@ -1,183 +1,94 @@
-"use client";
-
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Navigation } from "swiper/modules";
-import {
-  ArrowRight,
-  Compass,
-  MapPin,
-  PhoneCall,
-  ChevronLeft,
-  ChevronRight,
-  Globe,
-} from "lucide-react";
-import "swiper/css";
-import "swiper/css/effect-fade";
-
 import Link from "next/link";
-import { companyInfo, heroImages } from "@/lib/data";
-import Image from "next/image";
+import { ArrowRight, Compass, Globe, MapPin, ShieldCheck, Star } from "lucide-react";
 
-export const HeroSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [swiperRef, setSwiperRef] = useState(null);
+import HeroSlideshow from "@/components/HeroSlideshow";
+import BookingWidget from "@/components/booking/BookingWidget";
+import { companyInfo } from "@/lib/data";
+
+const TRUST_POINTS = [
+  { icon: Star, label: "4.9★ · 1200+ reviews" },
+  { icon: ShieldCheck, label: "Verified drivers" },
+  { icon: MapPin, label: "Coimbatore · Pollachi · Cochin" },
+];
+
+/**
+ * Server component on purpose: the headline is the LCP element, so it must
+ * be painted from the server HTML. The previous version wrapped it in a
+ * framer-motion node with `initial={{ opacity: 0 }}`, which left the largest
+ * text invisible until hydration finished and pushed LCP out by seconds.
+ * Entrance motion is now CSS, which runs before any JS arrives.
+ */
+export function HeroSection() {
+  const [firstWord, ...restWords] = companyInfo.companyName.split(" ");
 
   return (
-    <section className="relative flex items-center tracking-wide justify-center w-full min-h-screen pt-28 pb-16 overflow-hidden bg-slate-950 capitalize">
-      {/* BACKGROUND SWIPER WITH ZOOM EFFECT */}
-      <div className="absolute inset-0 z-0">
-        <Swiper
-          onSwiper={setSwiperRef}
-          modules={[Autoplay, EffectFade, Navigation]}
-          effect="fade"
-          loop={true}
-          speed={1800}
-          autoplay={{ delay: 5500, disableOnInteraction: false }}
-          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          className="w-full h-full"
-        >
-          {heroImages.map((slide, idx) => (
-            <SwiperSlide key={idx} className="overflow-hidden">
-              <div className="relative w-full h-full">
-                <Image
-                  fill
-                  priority={idx === 0}
-                  unoptimized
-                  sizes="100vw"
-                  src={slide}
-                  className={`object-cover w-full h-full transition-transform duration-[6000ms] ease-out ${
-                    activeIndex === idx ? "scale-110" : "scale-100"
-                  }`}
-                  alt={`Hero slide ${idx + 1}`}
-                />
+    <section className="relative isolate w-full overflow-hidden bg-slate-950 pb-14 pt-28 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36">
+      <HeroSlideshow />
 
-                
-                <div className="absolute inset-0 bg-slate-950/40" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-slate-950/60" />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-950/60 via-transparent to-slate-950/60" />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      {/* AMBIENT BACKGROUND GLOWS */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-10 w-[400px] h-[250px] bg-orange-600/15 blur-[100px] rounded-full pointer-events-none z-0" />
-
-      {/* MAIN CONTENT CONTAINER */}
-      <div className="container relative z-10 px-4 md:px-8 mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl mx-auto flex flex-col items-center"
-        >
-          {/* BADGE */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2.5 px-5 py-2 mb-4 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white shadow-xl shadow-black/10"
-          >
-            <Globe size={14} className="text-orange-500 animate-pulse" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-100">
-              Premium Travel & Tour Operator
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8">
+        {/* ---------- COPY ---------- */}
+        <div className="animate-hero-in text-center lg:col-span-6 lg:text-left">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-md">
+            <Globe className="h-3.5 w-3.5 text-orange-400" aria-hidden="true" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-100">
+              Premium Travel &amp; Tour Operator
             </span>
-          </motion.div>
+          </span>
 
-          {/* MAIN HEADING */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.02] tracking-tight uppercase mb-2 drop-shadow-sm">
-            {companyInfo.companyName.split(" ").slice(0, 1)}{" "}
-            <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-500 bg-clip-text text-transparent">
-              {companyInfo.companyName.split(" ").slice(1).join(" ")}
+          <h1 className="mt-5 text-4xl font-bold uppercase leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+            {firstWord}{" "}
+            <span className="bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+              {restWords.join(" ")}
             </span>
           </h1>
 
-          {/* SUBTITLE */}
-          <p className="max-w-2xl mx-auto mb-10 font-normal leading-relaxed text-white text-sm sm:text-base md:text-lg">
-            Your trusted travel partner based in the heart of{" "}
-            <span className="text-orange-400 font-semibold  underline-offset-4 decoration-orange-500/50">
-              Coimbatore
-            </span>
-            , offering luxury cabs and tour packages with active hubs in{" "}
-            <span className="text-white font-semibold">
-              Coimbatore.
-            </span>
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-slate-200 sm:text-base lg:mx-0">
+            Your trusted travel partner in{" "}
+            <span className="font-semibold text-orange-400">Coimbatore</span> —
+            luxury cabs, airport transfers and 1 to 9-day South India tour
+            packages, with transparent per-km pricing and zero hidden tolls.
           </p>
 
-          {/* ACTION BUTTONS */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 lg:justify-start">
+            {TRUST_POINTS.map(({ icon: Icon, label }) => (
+              <li
+                key={label}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-200"
+              >
+                <Icon className="h-3.5 w-3.5 text-orange-400" aria-hidden="true" />
+                {label}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
             <Link
               href="/tour-packages"
-              className="w-full sm:w-auto flex justify-center"
+              className="group inline-flex w-full max-w-xs items-center justify-center gap-2.5 rounded-full border border-orange-400 bg-orange-600 px-7 py-3.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg shadow-orange-900/30 transition-colors hover:bg-orange-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto"
             >
-              <motion.button
-                whileHover={{ scale: 1.0 }}
-                whileTap={{ scale: 0.99 }}
-                className="w-full max-w-xs sm:w-auto px-8 py-3.5 bg-orange-600/50 hover:bg-orange-600/70 text-white rounded-full  text-xs uppercase tracking-wide shadow-lg shadow-orange-600/30 transition-all flex items-center justify-center gap-3 group border border-orange-400 font-bold"
-              >
-                <Compass
-                  size={16}
-                  className="text-white transition-transform group-hover:rotate-45"
-                />
-                Explore Packages
-                <ArrowRight
-                  size={16}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </motion.button>
+              <Compass className="h-4 w-4 transition-transform group-hover:rotate-45" aria-hidden="true" />
+              Explore Packages
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </Link>
 
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto flex justify-center"
+            <a
+              href="tel:+918754142281"
+              className="inline-flex w-full max-w-xs items-center justify-center gap-2.5 rounded-full border border-white/25 bg-white/10 px-7 py-3.5 text-xs font-bold uppercase tracking-wide text-white backdrop-blur-md transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto"
             >
-              <motion.button
-                whileHover={{ scale: 1.0 }}
-                whileTap={{ scale: 0.99 }}
-                className="w-full max-w-xs sm:w-auto px-8 py-3.5 bg-blue-600/50 hover:bg-blue-600/70 text-white rounded-full font-bold text-xs uppercase tracking-wide shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-3 group border border-blue-400"
-              >
-                <PhoneCall size={15} className="text-white" />
-                Contact Us
-              </motion.button>
-            </Link>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* BOTTOM FOOTER BAR WITHIN HERO */}
-      <div className="absolute z-20 bottom-6 sm:bottom-10 left-6 right-6 md:left-12 md:right-12 flex items-end justify-between">
-        {/* LOCATION INFO */}
-        <div className="hidden md:flex items-center gap-3 text-left">
-          <div className="p-2.5 rounded-full bg-white/5 border border-white/10 text-orange-400">
-            <MapPin size={16} />
-          </div>
-          <div>
-            <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.25em]">
-              HQ Location
-            </p>
-            <p className="text-white text-xs font-bold uppercase ">
-              Coimbatore, TN
-            </p>
+              Call +91 87541 42281
+            </a>
           </div>
         </div>
-      
 
-        {/* YEAR EST. */}
-        <div className="hidden md:block text-right">
-          <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.25em]">
-            Established
-          </p>
-          <p className="text-white text-xs font-bold uppercase ">
-            © 2026 {companyInfo.companyName}
-          </p>
+        {/* ---------- BOOKING ---------- */}
+        <div className="animate-hero-in-delayed lg:col-span-6">
+          <div className="mb-3 text-center lg:text-left">
+          </div>
+          <BookingWidget />
         </div>
       </div>
     </section>
   );
-};
+}
 
 export default HeroSection;

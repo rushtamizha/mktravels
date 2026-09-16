@@ -60,7 +60,9 @@ export default function Footer() {
                 src="/travelFamily.png"
                 alt="Ready to Travel with MK Travels"
                 fill
-                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
+                quality={70}
                 className="object-contain object-bottom drop-shadow-2xl"
               />
             </div>

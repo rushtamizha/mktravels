@@ -1,14 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import {
-  CalendarDays,
   CheckCircle2,
-  Clock,
-  Loader2,
   MapPin,
   Navigation,
-  Route,
   Send,
   Users,
 } from "lucide-react";
@@ -49,7 +45,6 @@ export default function BookingWidget() {
   const [pickupTime, setPickupTime] = useState("09:00");
   const [returnDate, setReturnDate] = useState("");
   const [returnTime, setReturnTime] = useState("18:00");
-  const [passengers, setPassengers] = useState("2");
   const [vehicleKey, setVehicleKey] = useState(VEHICLES[0]?.key ?? "sedan");
   const [duration, setDuration] = useState("hrs8");
   const [airport, setAirport] = useState(AIRPORTS[0]);
@@ -59,9 +54,6 @@ export default function BookingWidget() {
   const [notes, setNotes] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-
-  const [routeInfo, setRouteInfo] = useState(null);
-  const [routeLoading, setRouteLoading] = useState(false);
 
   const minDate = useMemo(() => todayISO(), []);
   const isRoundTrip = tripType === "round-trip";
@@ -75,7 +67,7 @@ export default function BookingWidget() {
     [tourCategory]
   );
 
-  // Trip length drives both the driver allowance and the minimum-km floor.
+  // Calculate the trip duration for the booking details.
   const tripDays = useMemo(() => {
     if (isTour) return selectedCategory?.days ?? 1;
     if (isRoundTrip && pickupDate && returnDate) {
@@ -86,77 +78,14 @@ export default function BookingWidget() {
     return 1;
   }, [isTour, isRoundTrip, selectedCategory, pickupDate, returnDate]);
 
-  // Live distance lookup once both ends of the trip are known.
-  const lastQuery = useRef("");
-  useEffect(() => {
-    if (!needsRoute) {
-      setRouteInfo(null);
-      return;
-    }
-
-    const from = pickup.placeId ?? pickup.text.trim();
-    const to = drop.placeId ?? drop.text.trim();
-    if (!from || !to || from.length < 3 || to.length < 3) {
-      setRouteInfo(null);
-      return;
-    }
-
-    const key = `${from}|${to}`;
-    if (key === lastQuery.current) return;
-
-    const controller = new AbortController();
-    const timer = setTimeout(async () => {
-      setRouteLoading(true);
-      try {
-        const response = await fetch("/api/places/route-info", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ origin: pickup, destination: drop }),
-          signal: controller.signal,
-        });
-        const data = await response.json();
-        if (typeof data.distanceKm === "number" && data.distanceKm > 0) {
-          lastQuery.current = key;
-          setRouteInfo(data);
-        } else {
-          setRouteInfo(null);
-        }
-      } catch {
-        setRouteInfo(null);
-      } finally {
-        setRouteLoading(false);
-      }
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-      controller.abort();
-    };
-  }, [needsRoute, pickup, drop]);
-
-  const fare = useMemo(() => {
-    if (isLocal) {
-      return estimateFare({ tripType, vehicleKey, duration });
-    }
-    if (needsRoute && routeInfo?.distanceKm) {
-      return estimateFare({
-        tripType,
-        vehicleKey,
-        distanceKm: routeInfo.distanceKm,
-        days: tripDays,
-      });
-    }
-    return null;
-  }, [isLocal, needsRoute, routeInfo, tripType, vehicleKey, duration, tripDays]);
-
-  const resetRoute = useCallback(() => {
-    lastQuery.current = "";
-    setRouteInfo(null);
-  }, []);
+  // Local packages use fixed rates and do not require a distance lookup.
+  const fare = useMemo(
+    () => isLocal ? estimateFare({ tripType, vehicleKey, duration }) : null,
+    [isLocal, tripType, vehicleKey, duration]
+  );
 
   function handleTripTypeChange(id) {
     setTripType(id);
-    resetRoute();
     setSubmitted(false);
   }
 
@@ -171,14 +100,14 @@ export default function BookingWidget() {
     if (isTour) {
       rows.push(
         ["Package", tourCategory],
-        ["Pickup City", pickup.text],
+        ["Pickup City", pickup.text.trim()],
         ["Start Date", pickupDate],
         ["Pickup Time", pickupTime],
         ["Duration", `${tripDays} day${tripDays > 1 ? "s" : ""}`]
       );
     } else if (isLocal) {
       rows.push(
-        ["City", pickup.text],
+        ["City", pickup.text.trim()],
         ["Package", LOCAL_DURATIONS.find((d) => d.value === duration)?.label],
         ["Date", pickupDate],
         ["Pickup Time", pickupTime]
@@ -187,15 +116,15 @@ export default function BookingWidget() {
       rows.push(
         ["Direction", airportDirection === "to-airport" ? "To airport" : "From airport"],
         ["Airport", airport],
-        [airportDirection === "to-airport" ? "Pickup" : "Drop", pickup.text],
+        [airportDirection === "to-airport" ? "Pickup" : "Drop", pickup.text.trim()],
         ["Date", pickupDate],
         ["Time", pickupTime],
         ["Flight No.", flightNumber]
       );
     } else {
       rows.push(
-        ["Pickup", pickup.text],
-        ["Drop", drop.text],
+        ["Pickup", pickup.text.trim()],
+        ["Drop", drop.text.trim()],
         ["Pickup Date", pickupDate],
         ["Pickup Time", pickupTime]
       );
@@ -204,16 +133,7 @@ export default function BookingWidget() {
       }
     }
 
-    rows.push(["Passengers", passengers], ["Vehicle", vehicle?.name]);
 
-    if (routeInfo?.distanceKm) {
-      rows.push([
-        "Distance",
-        `${isRoundTrip ? routeInfo.distanceKm * 2 : routeInfo.distanceKm} km${
-          isRoundTrip ? " (round trip)" : ""
-        }`,
-      ]);
-    }
     if (fare?.total) {
       rows.push(["Indicative Fare", `${formatINR(fare.total)} (estimate)`]);
     }
@@ -338,10 +258,7 @@ export default function BookingWidget() {
             }
             required
             value={pickup}
-            onChange={(next) => {
-              setPickup(next);
-              resetRoute();
-            }}
+            onChange={setPickup}
             placeholder="e.g. Gandhipuram, Coimbatore"
             icon={MapPin}
           />
@@ -351,10 +268,7 @@ export default function BookingWidget() {
               label="Drop Location"
               required
               value={drop}
-              onChange={(next) => {
-                setDrop(next);
-                resetRoute();
-              }}
+              onChange={setDrop}
               placeholder="e.g. Ooty, Tamil Nadu"
               icon={Navigation}
             />
@@ -375,7 +289,7 @@ export default function BookingWidget() {
             </SelectField>
           )}
 
-          {isTour && (
+          {/* {isTour && (
             <TextField
               label="Travellers"
               type="number"
@@ -385,7 +299,7 @@ export default function BookingWidget() {
               value={passengers}
               onChange={(e) => setPassengers(e.target.value)}
             />
-          )}
+          )} */}
 
           {/* ---------- DATES ---------- */}
           <TextField
@@ -437,7 +351,7 @@ export default function BookingWidget() {
             />
           )}
 
-          {!isTour && (
+          {/* {!isTour && (
             <TextField
               label="Passengers"
               type="number"
@@ -447,7 +361,7 @@ export default function BookingWidget() {
               value={passengers}
               onChange={(e) => setPassengers(e.target.value)}
             />
-          )}
+          )} */}
 
           <SelectField
             label="Vehicle"
@@ -513,50 +427,20 @@ export default function BookingWidget() {
           )}
         </div>
 
-        {/* ---------- LIVE ESTIMATE ---------- */}
-        {(routeLoading || routeInfo || fare) && (
+        {/* ---------- LOCAL PACKAGE ESTIMATE ---------- */}
+        {fare && (
           <div className="mt-5 rounded-2xl border border-blue-100 bg-blue-50/70 p-4">
-            {routeLoading ? (
-              <p className="flex items-center gap-2 text-xs font-semibold text-blue-900">
-                <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
-                Calculating distance…
-              </p>
-            ) : (
-              <div className="space-y-2.5">
-                {routeInfo && (
-                  <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs font-semibold text-blue-900">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Route className="h-3.5 w-3.5" aria-hidden="true" />
-                      {isRoundTrip
-                        ? `${routeInfo.distanceKm * 2} km round trip`
-                        : `${routeInfo.distanceKm} km`}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock className="h-3.5 w-3.5" aria-hidden="true" />
-                      {Math.floor(routeInfo.durationMinutes / 60)}h{" "}
-                      {routeInfo.durationMinutes % 60}m one way
-                    </span>
-                  </div>
-                )}
-
-                {fare && (
-                  <>
-                    <div className="flex items-baseline justify-between gap-3 border-t border-blue-200/70 pt-2.5">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-blue-900/70">
-                        Indicative fare
-                      </span>
-                      <span className="text-xl font-extrabold text-blue-950">
-                        {formatINR(fare.total)}
-                      </span>
-                    </div>
-                    <p className="text-[11px] leading-relaxed text-slate-600">
-                      {fare.breakdown.map((row) => row.label).join(" + ")}.{" "}
-                      {fare.note}
-                    </p>
-                  </>
-                )}
-              </div>
-            )}
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-blue-900/70">
+                Indicative fare
+              </span>
+              <span className="text-xl font-extrabold text-blue-950">
+                {formatINR(fare.total)}
+              </span>
+            </div>
+            <p className="mt-2.5 text-[11px] leading-relaxed text-slate-600">
+              {fare.breakdown.map((row) => row.label).join(" + ")}. {fare.note}
+            </p>
           </div>
         )}
 
